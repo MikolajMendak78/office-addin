@@ -2,10 +2,24 @@
 <html>
 <head>
   <meta charset="utf-8" />
-  <title>Hello World Add-in</title>
+  <title>Functions</title>
   <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
+  <script>
+    Office.onReady(() => {
+      // Office.js gotowy do działania
+    });
+
+    function showHelloMessage(event) {
+      Office.context.mailbox.item.notificationMessages.addAsync("helloMsg", {
+        type: "informationalMessage",
+        message: "Hello!",
+        icon: "iconid",
+        persistent: false
+      });
+      event.completed();
+    }
+  </script>
 </head>
 <body>
-  <h1>Hello World</h1>
 </body>
 </html>
