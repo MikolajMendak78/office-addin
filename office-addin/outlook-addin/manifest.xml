@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:type="MessageReadCommandSurface"
+    Version="1.0.0.0"
+    ProviderName="Nestoya ERP"
+    DefaultLocale="en-US"
+    DisplayName DefaultValue="Nestoya ERP Add-in">
+    <Id>1e2f45d6-7a7b-4c92-a6fc-demo123456789</Id>
+    <Description DefaultValue="Testowy przycisk Lorem Ipsum dla ERP" />
+    <IconUrl DefaultValue="https://twoja-domena.pl/assets/logo.png" />
+    <SupportUrl DefaultValue="https://twoja-domena.pl/support" />
+
+    <Hosts>
+        <Host Name="Mailbox" />
+    </Hosts>
+
+    <Requirements>
+        <Sets DefaultMinVersion="1.1">
+            <Set Name="Mailbox" />
+        </Sets>
+    </Requirements>
+
+    <Resources>
+        <Urls>
+            <Url>https://twoja-domena.pl/assets/outlook-addin/taskpane.html</Url>
+        </Urls>
+        <Images>
+            <Image DefaultValue="https://twoja-domena.pl/assets/logo.png" />
+        </Images>
+    </Resources>
+
+    <ExtensionPoint xsi:type="MessageReadCommandSurface">
+        <OfficeTab id="MessageReadCommandSurface">
+            <Group id="msgReadGroup">
+                <Label resid="groupLabel" />
+                <Control xsi:type="Button" id="showTaskPaneButton">
+                    <Label resid="paneReadButtonLabel" />
+                    <Supertip>
+                        <Title resid="paneReadButtonTitle" />
+                        <Description resid="paneReadButtonDesc" />
+                    </Supertip>
+                    <Icon>
+                        <bt:Image size="16" resid="icon16" />
+                        <bt:Image size="32" resid="icon32" />
+                        <bt:Image size="80" resid="icon80" />
+                    </Icon>
+                    <Action xsi:type="ShowTaskpane">
+                        <SourceLocation resid="taskpaneUrl" />
+                    </Action>
+                </Control>
+            </Group>
+        </OfficeTab>
+    </ExtensionPoint>
+
+    <VersionOverrides Version="1.0">
+        <Resources>
+            <bt:Images>
+                <bt:Image id="icon16" DefaultValue="https://twoja-domena.pl/assets/icon-16.png" />
+                <bt:Image id="icon32" DefaultValue="https://twoja-domena.pl/assets/icon-32.png" />
+                <bt:Image id="icon80" DefaultValue="https://twoja-domena.pl/assets/icon-80.png" />
+            </bt:Images>
+            <bt:Urls>
+                <bt:Url id="taskpaneUrl"
+                    DefaultValue="https://twoja-domena.pl/assets/outlook-addin/taskpane.html" />
+            </bt:Urls>
+            <bt:ShortStrings>
+                <bt:String id="groupLabel" DefaultValue="Nestoya ERP" />
+                <bt:String id="paneReadButtonLabel" DefaultValue="Otwórz ERP" />
+                <bt:String id="paneReadButtonTitle" DefaultValue="Otwórz panel ERP" />
+            </bt:ShortStrings>
+            <bt:LongStrings>
+                <bt:String id="paneReadButtonDesc"
+                    DefaultValue="Kliknij, aby otworzyć ERP Appointment Scheduler" />
+            </bt:LongStrings>
+        </Resources>
+    </VersionOverrides>
+</OfficeApp>
