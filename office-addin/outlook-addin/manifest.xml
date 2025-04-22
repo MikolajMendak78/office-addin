@@ -1,58 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:type="MessageReadCommandSurface"
-    Version="1.0.0.0"
-    ProviderName="Nestoya ERP"
-    DefaultLocale="en-US"
-    DisplayName DefaultValue="Nestoya ERP Add-in">
-    <Id>1e2f45d6-7a7b-4c92-a6fc-demo123456789</Id>
-    <Description DefaultValue="Testowy przycisk Lorem Ipsum dla ERP" />
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:type="MailApp">
+  <Id>6777b03e-87e6-49d1-8cae-610595f1e83d</Id>
+  <Version>1.0.0.0</Version>
+  <ProviderName>TwojaFirma</ProviderName>
+  <DefaultLocale>en-US</DefaultLocale>
+  <DisplayName DefaultValue="Hello World Add-in"/>
+  <Description DefaultValue="Prosty dodatek do Outlooka wyświetlający Hello World"/>
+  <IconUrl DefaultValue="https://twojadomena.com/assets/icon-32.png"/>
+  <HighResolutionIconUrl DefaultValue="https://twojadomena.com/assets/icon-64.png"/>
+  <SupportUrl DefaultValue="https://twojadomena.com/support"/>
 
-    <Hosts>
-        <Host Name="Mailbox" />
-    </Hosts>
+  <Hosts>
+    <Host Name="Mailbox"/>
+  </Hosts>
 
-    <Requirements>
-        <Sets DefaultMinVersion="1.1">
-            <Set Name="Mailbox" />
-        </Sets>
-    </Requirements>
+  <Requirements>
+    <Sets DefaultMinVersion="1.1">
+      <Set Name="Mailbox"/>
+    </Sets>
+  </Requirements>
 
-    <ExtensionPoint xsi:type="MessageReadCommandSurface">
-        <OfficeTab id="MessageReadCommandSurface">
-            <Group id="msgReadGroup">
-                <Label resid="groupLabel" />
-                <Control xsi:type="Button" id="showTaskPaneButton">
-                    <Label resid="paneReadButtonLabel" />
-                    <Supertip>
-                        <Title resid="paneReadButtonTitle" />
-                        <Description resid="paneReadButtonDesc" />
-                    </Supertip>
-                    <Icon>
-                        <bt:Image size="16" resid="icon16" />
-                        <bt:Image size="32" resid="icon32" />
-                        <bt:Image size="80" resid="icon80" />
-                    </Icon>
-                    <Action xsi:type="ShowTaskpane">
-                        <SourceLocation resid="taskpaneUrl" />
-                    </Action>
-                </Control>
-            </Group>
-        </OfficeTab>
-    </ExtensionPoint>
+  <FormSettings>
+    <Form xsi:type="ItemRead">
+      <DesktopSettings>
+        <SourceLocation DefaultValue="https://twojadomena.com/taskpane.html"/>
+        <RequestedHeight>250</RequestedHeight>
+      </DesktopSettings>
+    </Form>
+  </FormSettings>
 
-    <VersionOverrides Version="1.0">
-        <Resources>
-            <bt:ShortStrings>
-                <bt:String id="groupLabel" DefaultValue="Nestoya ERP" />
-                <bt:String id="paneReadButtonLabel" DefaultValue="Otwórz ERP" />
-                <bt:String id="paneReadButtonTitle" DefaultValue="Otwórz panel ERP" />
-            </bt:ShortStrings>
-            <bt:LongStrings>
-                <bt:String id="paneReadButtonDesc"
-                    DefaultValue="Kliknij, aby otworzyć ERP Appointment Scheduler" />
-            </bt:LongStrings>
-        </Resources>
-    </VersionOverrides>
+  <Permissions>ReadWriteItem</Permissions>
+
+  <Rule xsi:type="RuleCollection" Mode="Or">
+    <Rule xsi:type="ItemIs" ItemType="Message" FormType="Read"/>
+  </Rule>
 </OfficeApp>
